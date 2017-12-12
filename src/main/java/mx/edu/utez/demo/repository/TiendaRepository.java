@@ -6,16 +6,14 @@
 package mx.edu.utez.demo.repository;
 
 import java.io.Serializable;
-import mx.edu.utez.demo.entity.Empleado;
+import mx.edu.utez.demo.entity.Tienda;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
-@Repository("EmpleadoRepository")
-public interface EmpleadoRepository extends JpaRepository<Empleado,Serializable>{
-    
-    public Empleado findEmpleadoByIdEmpleado(Integer idEmpleado);
-     
-    
+@Repository("tiendaRepository")
+public interface TiendaRepository extends JpaRepository<Tienda,Serializable>{
+    public Tienda findTiendaByIdTienda(Integer idTienda);
     
 }

@@ -57,7 +57,7 @@ public class Empleado implements Serializable {
     private Tienda tienda;
     @JoinColumn(name = "TipoEmpleado", referencedColumnName = "idTipoEmpleado")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Tipoempleado tipoEmpleado;
+    private TipoEmpleado tipoEmpleado;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleado", fetch = FetchType.LAZY)
     private List<Caja> cajaList;
@@ -131,11 +131,11 @@ public class Empleado implements Serializable {
         this.tienda = tienda;
     }
 
-    public Tipoempleado getTipoEmpleado() {
+    public TipoEmpleado getTipoEmpleado() {
         return tipoEmpleado;
     }
 
-    public void setTipoEmpleado(Tipoempleado tipoEmpleado) {
+    public void setTipoEmpleado(TipoEmpleado tipoEmpleado) {
         this.tipoEmpleado = tipoEmpleado;
     }
 

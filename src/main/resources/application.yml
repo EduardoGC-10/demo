@@ -1,3 +1,14 @@
+banner:
+  charset: UTF-8
+  location: classpath:banner.txt
+
+server:
+       error:
+             whitelabel:
+                       enabled: false
+
+
+       context-path: /utez
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/ferreteria

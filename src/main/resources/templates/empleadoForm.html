@@ -1,31 +1,52 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"/>
+        <title>Backend Ninja - Add/modify Contact</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <form id="registroN">
-            <label>Nombre:</label>
-            <input name="nombre" type="text" class="form-control" placeholder="Nombre">
-            <label>Apellido1:</label>
-            <input name="apellido1" type="text" class="form-control" placeholder="Nombre">
-            <label>Apellido2:</label>
-            <input name="apellido2" type="text" class="form-control" placeholder="Nombre">
-            <label>Saldo:</label>
-            <input type="number" name="saldo" class="form-control" placeholder="Nombre">
-            <label>Telefono:</label>
-            <input name="nombre" type="text" class="form-control" placeholder="Nombre">
-            <label>Telefono:</label> 
-            <input name="nombre" type="text" class="form-control" placeholder="Nombre">
-        </form>
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Empleado Form</h1>
+                <br />
+                <form action="#" th:action="@{/empleado/addempleado}" th:object="${empleadoModel}" method="post">
+
+                    <input type="hidden"  th:field="*{id}"></input>
+                    Nombre: <input type="text" class="form-control" th:field="*{nombre}" th:value="${nombre}"></input> <br />
+                    Primer Apellido: <input type="text" class="form-control" th:field="*{apellido1}" th:value="${apellido1}"></input> <br />
+                    Segundo Apellido: <input type="text" class="form-control" th:field="*{apellido2}" th:value="${apellido2}"></input> <br />
+                    Telefono <input type="number" class="form-control" th:field="*{telefono}" th:value="${telefono}"></input> <br /> <br />
+                    Sueldo<input type="text" class="form-control" th:field="*{sueldo}" th:value="${sueldo}"></input> <br /> <br />
+                    Tipo Empleado
+                    <select class="form-control" th:each="listaEmpleado: ${tipoEmpleadoList}">
+                        <option th:value="${listaEmpleado.idTipoEmpleado}" th:text="${listaEmpleado.tipoEmpleado}"></option>
+
+                    </select>
+                    Tienda
+                    <select class="form-control" th:each="listaTienda: ${listaTienda}">
+                        <option th:value="${listaTienda.idTienda}" th:text="${listaTienda.direccion}"></option>
+
+                    </select>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        Accept
+                    </button>
+                </form>
+                <a href="#" th:href="@{/empleado/cancel}">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancelar
+                    </button>
+                </a>
+                
+            </div>
+
+        </div>
     </body>
 </html>

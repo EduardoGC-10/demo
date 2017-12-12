@@ -6,16 +6,15 @@
 package mx.edu.utez.demo.repository;
 
 import java.io.Serializable;
-import mx.edu.utez.demo.entity.Empleado;
+import mx.edu.utez.demo.entity.TipoEmpleado;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-
-@Repository("EmpleadoRepository")
-public interface EmpleadoRepository extends JpaRepository<Empleado,Serializable>{
-    
-    public Empleado findEmpleadoByIdEmpleado(Integer idEmpleado);
-     
-    
-    
+/**
+ *
+ * @author GABY
+ */
+@Repository("TipoEmpleadoRepository")
+public interface TipoEmpleadoRepository extends JpaRepository<TipoEmpleado,Serializable>{
+    public TipoEmpleado findTipoEmpleadoByIdTipoEmpleado(Integer idTipoEmpleado);
 }
