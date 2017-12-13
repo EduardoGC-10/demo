@@ -26,6 +26,8 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     @Autowired
     private EmpleadoRepository empleadoRepository;
 
+    
+
     @Autowired
     private EmpleadoConverter empleadoConverter;
 
@@ -47,11 +49,20 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     @Override
     public EmpleadoModel addEmpleado(EmpleadoModel empleadoModel) {
         // TODO Auto-generated method stub
-
+           
         Empleado empleado = empleadoRepository.save(empleadoConverter.convertEmpleadoModelToEmpleado(empleadoModel));
-        
-        return empleadoConverter.convertEmpleadoToEmpleadoModel(empleado);
 
+        return empleadoConverter.convertEmpleadoToEmpleadoModel(empleado);
+   
     }
+
+    @Override
+    public void removeEmpleado(int idEmpleado) {
+       Empleado empleado=findEmpleadoByIdEmpleado(idEmpleado);
+		if(empleado !=null){
+		empleadoRepository.delete(idEmpleado);
+		}
+    }
+    
 
 }

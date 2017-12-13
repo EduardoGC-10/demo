@@ -25,13 +25,13 @@
                     Telefono <input type="number" class="form-control" th:field="*{telefono}" th:value="${telefono}"></input> <br /> <br />
                     Sueldo<input type="text" class="form-control" th:field="*{sueldo}" th:value="${sueldo}"></input> <br /> <br />
                     Tipo Empleado
-                    <select class="form-control" th:each="listaEmpleado: ${tipoEmpleadoList}">
-                        <option th:value="${listaEmpleado.idTipoEmpleado}" th:text="${listaEmpleado.tipoEmpleado}"></option>
+                    <select class="form-control" th:field="*{tipoEmpleado}" th:value="${empleadoModel.TipoEmpleado}">
+                        <option th:each="listaEmpleado: ${tipoEmpleadoList}" th:value="${listaEmpleado.idTipoEmpleado}" th:text="${listaEmpleado.tipoEmpleado}"></option>
 
                     </select>
                     Tienda
-                    <select class="form-control" th:each="listaTienda: ${listaTienda}">
-                        <option th:value="${listaTienda.idTienda}" th:text="${listaTienda.direccion}"></option>
+                    <select class="form-control" th:field="*{Tienda}" th:value="${empleadoModel.Tienda}">
+                        <option th:each="listaTienda: ${listaTienda}" th:value="${listaTienda.idTienda}" th:text="${listaTienda.direccion}"></option>
 
                     </select>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">

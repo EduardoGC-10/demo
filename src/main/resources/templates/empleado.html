@@ -1,78 +1,96 @@
 <!DOCTYPE html>
 <html  xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1" />
-<title>Insert title here</title>
-<script type="text/javascript" th:src="@{/js/jquery.js}"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script  src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" /> 
+    <head>
+        <meta charset="ISO-8859-1" />
+        <title>Insert title here</title>
+        <script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script  src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" /> 
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        console.log("ready!!");
-       
-        var table =  $('#example').DataTable({
-          language: {
-            "sProcessing":     "Procesando...",
-            "sLengthMenu":     "Mostrar _MENU_ registros",
-            "sZeroRecords":    "No se encontraron resultados",
-            "sEmptyTable":     "Ningún dato disponible en esta tabla",
-            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-            "sInfoPostFix":    "",
-            "sSearch":         "Buscar:",
-            "sUrl":            "",
-            "sInfoThousands":  ",",
-            "sLoadingRecords": "Cargando...",
-            "oPaginate": {
-            "sFirst":    "Primero",
-            "sLast":     "Último",
-            "sNext":     "Siguiente",
-            "sPrevious": "Anterior"
-            },
-            "oAria": {
-            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-            }
-        } 
-       
-    });
-    });
-</script>
-</head>
-<body>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                console.log("ready!!");
 
-    <div class="container">
-        <div class="panel-body">
-            <div class="col-md-12">
- <table id="example">
-            <thead>
-            <tr>
-            <th>Nombre</th>
-            <th>ApellidoPaterno</th>
-            <th>ApellidoMaterno</th>
-            </tr>
-        </thead>
-        <tbody>
+                var table = $('#example').DataTable({
+                    language: {
+                        "sProcessing": "Procesando...",
+                        "sLengthMenu": "Mostrar _MENU_ registros",
+                        "sZeroRecords": "No se encontraron resultados",
+                        "sEmptyTable": "Ningún dato disponible en esta tabla",
+                        "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                        "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                        "sInfoPostFix": "",
+                        "sSearch": "Buscar:",
+                        "sUrl": "",
+                        "sInfoThousands": ",",
+                        "sLoadingRecords": "Cargando...",
+                        "oPaginate": {
+                            "sFirst": "Primero",
+                            "sLast": "Último",
+                            "sNext": "Siguiente",
+                            "sPrevious": "Anterior"
+                        },
+                        "oAria": {
+                            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                        }
+                    }
 
+                });
+            });
+        </script>
+    </head>
+    <body>
 
+        <div class="container">
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <table id="example">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>ApellidoPaterno</th>
+                                <th>ApellidoMaterno</th>
+                                <th>sueldo</th>
+                                <th>telefono</th>
+                                <th>Tienda Asignada</th>
+                                <th>Tipo de empleado</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  th:each="empleado: ${empleado}">
+                                <td  th:text="${empleado.nombre}"></td>
+                                <td th:text="${empleado.apellido1}"></td>
+                                <td th:text="${empleado.apellido2}"></td>
+                                <td th:text="${empleado.sueldo}"></td>
+                                <td th:text="${empleado.telefono}"></td>
+                                <td th:text="${empleado.tienda.direccion}"></td>
+                                <td th:text="${empleado.tipoEmpleado.tipoEmpleado}"></td>
+                                
+                                <td>
+                                    <a
+                                        th:href="@{/empleado/empleadoForm?id=__${empleado.idEmpleado}__}">
+                                        <button type="button" class="btn btn-warning" data-toggle="tooltip" title="Actualizar"><span class="glyphicon glyphicon-pencil"></span></button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a th:href="@{/empleado/removeempleado?id=__${empleado.idEmpleado}__}">
+                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Eliminar"> <span class="glyphicon glyphicon-trash"></span></button>
+                                    </a>
+                                </td>
+                            </tr>         
 
-                <tr  th:each="empleado: ${empleado}">
-                    <td  th:text="${empleado.nombre}"></td>
-                    <td th:text="${empleado.apellido1}"></td>
-                    <td th:text="${empleado.apellido2}"></td>
-                </tr>      
-          
+                        </tbody>
 
-        </tbody>
-
-    </table>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-</body>
+    </body>
 </html>

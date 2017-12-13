@@ -34,11 +34,11 @@ public class EmpleadoController {
     private TipoEmpleadoService tipoEmpleadoService;
     @Autowired
     private TiendaService tiendaService;
-    @GetMapping("/cancel")
-	public String cancel() {
-		return "redirect:/empleado/goEmpleado";
-	}
 
+    @GetMapping("/cancel")
+    public String cancel() {
+        return "redirect:/empleado/goEmpleado";
+    }
 
     //@RequestMapping(value="goEmpleado",method=RequestMethod.GET)
     @GetMapping("goEmpleado")
@@ -48,22 +48,21 @@ public class EmpleadoController {
     }
 
     @GetMapping("empleadoForm")
-    public String empleadoForm(@RequestParam(name="id",required=false)Integer id,Model model) {
+    public String empleadoForm(@RequestParam(name = "id", required = false) Integer id, Model model) {
         EmpleadoModel empleadoModel = new EmpleadoModel();
         if (id != null) {
             empleadoModel = empleadoService.findEmpleadoByIdModel(id);
-            
+
         }
 
         model.addAttribute("empleadoModel", empleadoModel);
-        model.addAttribute("tipoEmpleadoList",tipoEmpleadoService.findAll());
-        model.addAttribute("listaTienda",tiendaService.findAll());
+        model.addAttribute("tipoEmpleadoList", tipoEmpleadoService.findAll());
+        model.addAttribute("listaTienda", tiendaService.findAll());
         return "empleadoForm";
     }
 
-   
     @PostMapping("/addempleado")
-    public String addContact(@ModelAttribute("empleadoModel") EmpleadoModel empleadoModel, RedirectAttributes model) {
+    public String addEmpleado(@ModelAttribute("empleadoModel") EmpleadoModel empleadoModel, RedirectAttributes model) {
         LOG.info("METHOD: addEmpleado() --PARAM : empleadoModel=" + empleadoModel);
 
         if (null != empleadoService.addEmpleado(empleadoModel)) {
@@ -74,4 +73,10 @@ public class EmpleadoController {
 
         return "redirect:/empleado/goEmpleado";
     }
+
+    @GetMapping("removeempleado")
+	public String removeEmpleado(@RequestParam(name="id",required=true)int id){
+		empleadoService.removeEmpleado(id);
+		return "redirect:/empleado/goEmpleado";
+	}
 }
