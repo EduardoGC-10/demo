@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Backend Ninja - Add/modify Contact</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Producto Form</h1>
+                <br />
+                <form action="#" th:action="@{/producto/addproducto}" th:object="${productoModel}" method="post">
+
+                    <input type="text" th:field="*{idProducto}" th:value="${productoModel.idProducto}"></input>
+                    Nombre: <input type="text" class="form-control" th:field="*{nombreProducto}" th:value="${productoModel.nombreProducto}"></input> <br />
+                    Clave: <input type="text" class="form-control" th:field="*{claveProducto}" th:value="${productoModel.claveProducto}"></input> <br />
+                    Precio: <input type="text" class="form-control" th:field="*{precio}" th:value="${productoModel.precio}"></input> <br />
+                    Tipo Producto 
+                    <select class="form-control" th:field="*{tipoProducto}" th:value="${productoModel.tipoProducto}">
+                        <option value="Conexiones">Conexiones</option>
+                        <option value="Carpinteria">Carpinteria</option>
+                        <option value="Construccion">Construcción</option>
+                        <option value="Corralon">Corralon</option>
+                        <option value="Deportes y de recreacion">Deportes y de recreacion</option>
+                        <option value="Electricidad">Electricidad</option>
+                        <option value="Ferreteria">Ferreteria</option>
+                        <option value="Hogar">Hogar</option>
+                        <option value="Maquinas y herramientas">Maquinas y herramientas</option>
+                        <option value="Pintureria">Pintureria</option>
+                        <option value="Talabarteria">Talabarteria</option>
+
+                    </select>
+                    Tienda
+                    <select class="form-control" th:field="*{idTienda}" th:value="${productoModel.idTienda}">
+                        <option th:each="listaTienda: ${listaTienda}" th:value="${listaTienda.idTienda}" th:text="${listaTienda.direccion}"></option>
+
+                    </select>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        Accept
+                    </button>
+                </form>
+                <a href="#" th:href="@{/producto/cancel}">
+                    <button class="btn btn-lg btn-primary btn-block">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancelar
+                    </button>
+                </a>
+
+            </div>
+
+        </div>
+    </body>
+</html>
+
