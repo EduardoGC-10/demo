@@ -45,7 +45,20 @@
         </script>
     </head>
     <body>
-
+<div class="form-group row">
+            <form  th:action="@{/logout}" method="POST">
+                <button class="btn-primary btn-sm" type="submit">
+                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                    Logout
+                </button>
+            </form>
+            <form  th:action="@{/logout}" method="POST">
+                <button class="btn-primary btn-sm" type="submit">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    Registrar
+                </button>
+            </form>
+        </div>
         <div class="container">
             <div class="panel-body">
                 <div class="col-md-12">
