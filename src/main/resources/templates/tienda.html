@@ -45,7 +45,32 @@
 </script>
 </head>
 <body>
-
+<nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Openy</a>
+                </div>
+                
+                <ul class="nav navbar-nav">                   
+                    <form  class="form-inline" th:action="@{/empleado/goEmpleado}">
+                        <button class="btn btn-default" type="submit">
+                            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                            Home
+                        </button>
+                    </form>  
+                   
+                </ul>
+                <ul class="nav navbar-nav navbar-right">                    
+                    <form th:action="@{/logout}" method="POST">
+                        <button class="btn btn-default" type="submit">
+                            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                            Logout
+                        </button>
+                    </form>                  
+                   
+                </ul>
+            </div>
+        </nav>
     <div class="container">
         <div class="panel-body">
             <div class="col-md-12">
