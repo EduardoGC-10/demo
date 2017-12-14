@@ -5,12 +5,9 @@
  */
 package mx.edu.utez.demo.controller;
 
+
 import mx.edu.utez.demo.entity.User;
-import mx.edu.utez.demo.model.EmpleadoModel;
 import mx.edu.utez.demo.model.UsuariosModel;
-import mx.edu.utez.demo.service.EmpleadoService;
-import mx.edu.utez.demo.service.TiendaService;
-import mx.edu.utez.demo.service.TipoEmpleadoService;
 import mx.edu.utez.demo.service.UserService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -24,18 +21,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-/**
- *
- * @author Nikcy
- */
 @Controller
 @RequestMapping("user")
 public class UserController {
 
-    private static final Log LOG = LogFactory.getLog(EmpleadoController.class);
+    private static final Log LOG = LogFactory.getLog(UserController.class);
 
     @Autowired
-    private UserService UserService;
+    private UserService userService;
 
     @GetMapping("/cancel")
     public String cancel() {
@@ -45,15 +38,15 @@ public class UserController {
     //@RequestMapping(value="goEmpleado",method=RequestMethod.GET)
     @GetMapping("goUser")
     public String goUsuario(Model model) {
-        model.addAttribute("user", UserService.findAll());
+        model.addAttribute("user", userService.findAll());
         return "user";
     }
-
+/*
     @GetMapping("usuarioForm")
     public String UsuarioForm(@RequestParam(name = "id", required = false) Integer id, Model model) {
-        User u = new User();
+        User usuario = new User();
         if (id != null) {
-             u = UserService.findEmpleadoByIdModel(id);
+             usuario = userService.findUsuarioByIdModel(id);
 
         }
 
@@ -61,24 +54,24 @@ public class UserController {
         model.addAttribute("password", UserService.findAll());
         model.addAttribute("enabled", UserService.findAll());
         return "usuarioForm";
-    }
+    }*/
 
     @PostMapping("/addUsuario")
-    public String addUsuario(@ModelAttribute("empleadoModel") EmpleadoModel empleadoModel, RedirectAttributes model) {
-        LOG.info("METHOD: addEmpleado() --PARAM : empleadoModel=" + empleadoModel);
+    public String addUsuario(@ModelAttribute("usuariosmodel") UsuariosModel usuariosmodel, RedirectAttributes model) {
+        LOG.info("METHOD: addUsuario() --PARAM : usuariosmodel=" + usuariosmodel);
 
-        if (null != UserService.addEmpleado(empleadoModel)) {
+        if (null != userService.addUsuario(usuariosmodel)) {
             model.addFlashAttribute("result", 1);
         } else {
             model.addFlashAttribute("result", 0);
         }
 
-        return "redirect:/Usuario/goUsuario";
+        return "redirect:/user/goUsuario";
     }
 
     @GetMapping("removUsuario")
-    public String removeUsuario(@RequestParam(name = "id", required = true) int id) {
-        UserService.removeUsuario(id);
-        return "redirect:/empleado/goEmpleado";
+    public String removeUsuario(@RequestParam(name = "username", required = true) String username) {
+        userService.removeUsuario(username);
+        return "redirect:/user/goUsuario";
     }
 }
