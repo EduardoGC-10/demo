@@ -23,7 +23,7 @@ import org.springframework.security.core.userdetails.User;
 
 @Service
 @Transactional
-public class UserService implements UserDetailsService {
+public class UserServiceImpl implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepository;

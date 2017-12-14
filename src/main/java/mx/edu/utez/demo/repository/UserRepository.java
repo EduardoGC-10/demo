@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import mx.edu.utez.demo.entity.User;
 
-@Repository
+@Repository("UserRepository")
 public interface UserRepository extends JpaRepository<User, Serializable>{
 
 	
