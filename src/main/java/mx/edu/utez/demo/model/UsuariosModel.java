@@ -10,17 +10,17 @@ public class UsuariosModel {
     
     private String username;
     private int enabled ;
-    private String varcharString;
+    private String password;
 
     public UsuariosModel() {
         super();
     }
 
-    public UsuariosModel(String username, int enabled, String varcharString) {
+    public UsuariosModel(String username, int enabled, String password) {
         super();
         this.username = username;
         this.enabled = enabled;
-        this.varcharString = varcharString;
+        this.password = password;
     }
 
     public String getUsername() {
@@ -39,14 +39,14 @@ public class UsuariosModel {
         this.enabled = enabled;
     }
 
-    public String getVarcharString() {
-        return varcharString;
+    public String getPassword() {
+        return password;
     }
 
-    public void setVarcharString(String varcharString) {
-        this.varcharString = varcharString;
+    public void setPassword(String password) {
+        this.password = password;
     }
-    
-    
+
+   
     
 }
