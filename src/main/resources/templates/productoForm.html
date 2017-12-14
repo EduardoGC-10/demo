@@ -12,14 +12,14 @@
         src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <div class="jumbotron">
-            <div class="container">
-                <h1>Producto Form</h1>
+         <div class="container">
+            
+                <h3>Producto Form</h3>
                 <br />
                 <form action="#" th:action="@{/producto/addproducto}" th:object="${productoModel}" method="post">
-
+                    
                     <input type="text" th:field="*{idProducto}" th:value="${productoModel.idProducto}"></input>
-                    Nombre: <input type="text" class="form-control" th:field="*{nombreProducto}" th:value="${productoModel.nombreProducto}"></input> <br />
+                    Nombre:  <br />
                     Clave: <input type="text" class="form-control" th:field="*{claveProducto}" th:value="${productoModel.claveProducto}"></input> <br />
                     Precio: <input type="text" class="form-control" th:field="*{precio}" th:value="${productoModel.precio}"></input> <br />
                     Tipo Producto 
@@ -55,7 +55,6 @@
 
             </div>
 
-        </div>
     </body>
 </html>
 

@@ -78,6 +78,15 @@
                     </form>  
                    
                 </ul>
+                 <ul class="nav navbar-nav">                   
+                    <form  class="form-inline" th:action="@{/empleado/empleadoForm}">
+                        <button class="btn btn-default" type="submit">
+                            <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+                            Agregar Empleado
+                        </button>
+                    </form>  
+                   
+                </ul>
                 <ul class="nav navbar-nav navbar-right">                    
                     <form th:action="@{/logout}" method="POST">
                         <button class="btn btn-default" type="submit">
